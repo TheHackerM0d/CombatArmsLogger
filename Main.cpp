@@ -13,8 +13,6 @@
 #pragma comment(lib, "d3dx9.lib")
 #include "PatternScanner.h"
 
-
-
 std::ofstream ofile;
 void __cdecl add_log(const char* fmt, ...)
 {
@@ -26,20 +24,6 @@ void __cdecl add_log(const char* fmt, ...)
 	ofile << logbuf << std::endl;
 	ofile.close();
 }
-
-bool GameReadyCheck(int Engines)
-{
-	if (Engines == 1)
-	{
-		if (GetModuleHandle("Engine.exe") != NULL && GetModuleHandle("CShell.dll") != NULL && GetModuleHandle("ClientFX.fxd") != NULL) return true;
-	}
-	else if (Engines == 2)
-	{
-		if (GetModuleHandle("Engine2.exe") != NULL && GetModuleHandle("CShell.dll") != NULL && GetModuleHandle("ClientFX.fxd") != NULL) return true;
-	}
-	return false;
-}
-
 
 std::wstring GetCurrentProcessName() { WCHAR fileName[MAX_PATH]; GetModuleFileNameW(NULL, fileName, MAX_PATH); return std::filesystem::path(fileName).filename().wstring(); }
 std::wstring processName = GetCurrentProcessName();
